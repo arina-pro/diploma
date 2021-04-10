@@ -407,7 +407,7 @@ class ConnectivityMeasure(BaseEstimator, TransformerMixin):
         """
         if self.kind == 'correlation':
             covariances_std = [self.cov_estimator_.fit(
-                signal._standardize(x, detrend=False, normalize=True) # unexpected arg normalize
+                signal._standardize(x, detrend=False, standardize=True) # unexpected arg normalize, changed to standardize
                 ).covariance_ for x in X]
             connectivities = [_cov_to_corr(cov) for cov in covariances_std]
         else:
